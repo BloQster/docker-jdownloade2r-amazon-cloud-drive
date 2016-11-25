@@ -1,15 +1,14 @@
 #!/bin/bash
 set -e
 
-if [ ! -f "$ACD_CLI_CACHE_PATH"/oauth_data ]; then
-	if [ -n "$ACD_OAUTH_DATA" ]; then
-		echo "$ACD_OAUTH_DATA" > "$ACD_CLI_CACHE_PATH"/oauth_data
+export RCLONE_CONFIG_FILE=$(echo ~)/.rclone.conf
+
+if [ ! -f "$RCLONE_CONFIG_FILE" ]; then
+	if [ -n "$RCLONE_CONFIG" ]; then
+		echo "$RCLONE_CONFIG" > "$RCLONE_CONFIG_FILE"
 	else
-		echo "ACD oauth data is not set. Please configure the ACD auth information."
+		echo "rclone config file does not exist and is not present in the environment variables."
 	fi
 fi
-
-acdcli sync
-acdcli mount -i 90 -ao "$ACD_MOUNT"
 
 source /jdownloader2_entrypoint.sh
