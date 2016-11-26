@@ -11,4 +11,6 @@ if [ ! -f "$RCLONE_CONFIG_FILE" ]; then
 	fi
 fi
 
+chown jdownloader2:jdownloader2 "$RCLONE_CONFIG_FILE"
+
 source /jdownloader2_entrypoint.sh
