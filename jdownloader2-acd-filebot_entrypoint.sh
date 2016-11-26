@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-export RCLONE_CONFIG_FILE=$(echo ~)/.rclone.conf
+export RCLONE_CONFIG_FILE="$JDOWNLOADER2_INSTALLDIR"/.rclone.conf
 
 if [ ! -f "$RCLONE_CONFIG_FILE" ]; then
 	if [ -n "$RCLONE_CONFIG" ]; then
