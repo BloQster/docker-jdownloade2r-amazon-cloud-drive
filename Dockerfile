@@ -5,9 +5,8 @@ RUN apt-get update \
  && apt-get install -y wget nano unzip \
  && rm -r /var/lib/apt/lists/*
 
-RUN wget 'http://downloads.rclone.org/rclone-current-linux-amd64.zip' \
- && unzip rclone-current-linux-amd64.zip \
- && cp /rclone-*-linux-amd64/rclone /usr/sbin/ \
+RUN wget -O rclone.zip 'http://beta.rclone.org/v1.34-51-gcb9f1ee/rclone-v1.34-51-gcb9f1ee%CE%B2-linux-amd64.zip' \
+ && unzip -p rclone.zip "rclone-v1.34-51-gcb9f1ee#U03b2-linux-amd64/rclone" > /usr/sbin/rclone \
  && rm -r rclone* \
  && chmod 755 /usr/sbin/rclone
 
